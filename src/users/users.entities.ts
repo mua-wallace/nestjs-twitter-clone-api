@@ -6,18 +6,20 @@ export class UserEntity extends BaseEntity {
   @Column({ length: 30, nullable: false, unique: true })
   username: string;
 
-  @Column({ length: 50 })
+  @Column({ nullable: true, length: 50 })
   name: string;
-  avater: string;
 
-  @Column({ length: 240 })
+  @Column({ nullable: true, length: 50 })
+  avatar: string;
+
+  @Column({ nullable: true, length: 240 })
   bio: string;
 
   @Column({ name: 'follower_count', default: 0 })
-  follwerCount: string;
+  follwerCount: number;
 
   @Column({ name: 'followee_count', default: 0 })
-  followeeCount: string;
+  followeeCount: number;
 
   @Column('boolean', { default: false })
   verified: boolean;
