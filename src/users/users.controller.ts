@@ -10,6 +10,7 @@ import {
   Put,
 } from '@nestjs/common';
 import { ApiProperty, ApiPropertyOptional, ApiTags } from '@nestjs/swagger';
+import { PasswordEntity } from 'src/auth/passwords.entity';
 import { UserEntity } from './users.entities';
 import { UsersService } from './users.service';
 
@@ -57,7 +58,10 @@ export class UsersController {
   async createNewUser(
     @Body() createUserRequest: UserCreateRequestBody,
   ): Promise<UserEntity> {
-    const user = await this.userService.createUser(createUserRequest);
+    const user = await this.userService.createUser(
+      createUserRequest,
+      createUserRequest.password,
+    );
     return user;
   }
 
